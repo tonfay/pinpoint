@@ -602,7 +602,12 @@ public class DefaultProfilerConfig implements ProfilerConfig {
 
         this.samplingEnable = readBoolean("profiler.sampling.enable", true);
         this.samplingRate = readInt("profiler.sampling.rate", 1);
-
+        //modify by tonfay .
+        //上报率支持通过jvm参数配置
+        //配置方式: -Dprofiler.sampling.rate=
+        String D = System.getProperty("profiler.sampling.rate");
+        this.samplingRate = NumberUtils.parseInteger(D, readInt("profiler.sampling.rate", 1));
+        
         // configuration for sampling and IO buffer 
         this.ioBufferingEnable = readBoolean("profiler.io.buffering.enable", true);
 
