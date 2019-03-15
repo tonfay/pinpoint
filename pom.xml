@@ -91,8 +91,8 @@
 
     <properties>
         <encoding>UTF-8</encoding>
-        <jdk.version>1.6</jdk.version>
-        <jdk.home>${env.JAVA_6_HOME}</jdk.home>
+        <jdk.version>1.8</jdk.version>
+        <jdk.home>${env.JAVA_8_HOME}</jdk.home>
         <test.jdk.home>${jdk.home}</test.jdk.home>
 
         <!-- library -->
