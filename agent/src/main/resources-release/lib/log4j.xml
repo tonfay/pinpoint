@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="${pinpoint.log}/${pinpoint.agentId}-pinpoint.log"/>
+        <param name="file" value="/data/log/pp-agent/${pinpoint.agentId}-pinpoint.log"/>
         <param name="Append" value="true"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd"/>
 
@@ -22,7 +22,7 @@
     </appender>
 
     <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="${pinpoint.log}/${pinpoint.agentId}-pinpoint.log"/>
+        <param name="file" value="/data/log/pp-agent/${pinpoint.agentId}-pinpoint.log"/>
         <param name="append" value="true"/>
         <param name="maxFileSize" value="10MB"/>
         <param name="maxBackupIndex" value="20"/>
