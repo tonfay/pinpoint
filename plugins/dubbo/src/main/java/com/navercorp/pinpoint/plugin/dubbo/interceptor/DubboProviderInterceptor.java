@@ -70,7 +70,9 @@ public class DubboProviderInterceptor extends SpanRecursiveAroundInterceptor {
     private void recordRequest(SpanRecorder recorder, Object target, Object[] args) {
         final RpcInvocation invocation = (RpcInvocation) args[0];
         final RpcContext rpcContext = RpcContext.getContext();
-
+        if(recorder == null) {
+            return;
+        }
         // Record rpc name, client address, server address.
         recorder.recordRpcName(invocation.getInvoker().getInterface().getSimpleName() + ":" + invocation.getMethodName());
         recorder.recordEndPoint(rpcContext.getLocalAddressString());

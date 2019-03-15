@@ -64,7 +64,9 @@ public class HttpStatusCodeErrors {
 
         List<StatusCode> statusCodeList = new ArrayList<StatusCode>();
         for (String errorCode : errorCodes) {
-            if (errorCode.equalsIgnoreCase("5xx")) {
+        	if (errorCode.equalsIgnoreCase("1xxx")) {
+        		statusCodeList.add(new ServerError());
+        	} else if (errorCode.equalsIgnoreCase("5xx")) {
                 statusCodeList.add(new ServerError());
             } else if (errorCode.equalsIgnoreCase("4xx")) {
                 statusCodeList.add(new ClientError());
@@ -169,7 +171,12 @@ public class HttpStatusCodeErrors {
     private static class ServerError implements StatusCode {
         @Override
         public boolean isCode(int statusCode) {
-            return 500 <= statusCode && statusCode <= 599;
+            if( 500 <= statusCode && statusCode <= 599) {
+                return true;
+            }else if(1000 <= statusCode && statusCode <= 9999) {
+                return true;
+            }
+            return false;
         }
 
         @Override

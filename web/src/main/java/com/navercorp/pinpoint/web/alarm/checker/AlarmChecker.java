@@ -82,7 +82,8 @@ public abstract class AlarmChecker<T> {
     }
     
     public String getEmailMessage() {
-        return String.format("%s value is %s%s during the past 5 mins.(Threshold : %s%s)<br>", rule.getCheckerName(), getDetectedValue(), unit, rule.getThreshold(), unit);
+        String url = SetUrlUtil.get(rule);
+        return String.format("[%s]-[%s] value is %s%s during the past 5 mins.(Threshold : %s%s)<br>%s<br>", rule.getApplicationId(),rule.getCheckerName(), getDetectedValue(), unit, rule.getThreshold(), unit,url);
     }
     
     protected abstract T getDetectedValue();

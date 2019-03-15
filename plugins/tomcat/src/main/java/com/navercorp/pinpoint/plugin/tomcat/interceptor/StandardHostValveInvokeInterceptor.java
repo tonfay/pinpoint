@@ -52,6 +52,7 @@ public class StandardHostValveInvokeInterceptor implements AroundInterceptor {
 
 
     public StandardHostValveInvokeInterceptor(TraceContext traceContext, MethodDescriptor descriptor) {
+    	logger.info("0000000000000000000000000{}00000000000000000{}",traceContext,descriptor);
         this.methodDescriptor = descriptor;
         this.argumentValidator = new ServletArgumentValidator(logger, 0, HttpServletRequest.class, 1, HttpServletResponse.class);
         final TomcatConfig config = new TomcatConfig(traceContext.getProfilerConfig());

@@ -22,14 +22,15 @@ import com.navercorp.pinpoint.common.trace.ServiceType;
 import com.navercorp.pinpoint.common.trace.SlotType;
 import com.navercorp.pinpoint.web.view.HistogramSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * @author emeroad
  * @author netspider
  */
 @JsonSerialize(using = HistogramSerializer.class)
 public class Histogram {
-
+    protected final Logger logger = LoggerFactory.getLogger(Histogram.class);
     private final HistogramSchema schema;
 
     private long fastCount;
@@ -64,6 +65,23 @@ public class Histogram {
 
     // TODO one may extract slot number from this class
     public void addCallCount(final short slotTime, final long count) {
+        try {
+            logger.info("ppppppppppppppppppppppppppppppppppppp slotTime:[{}], count:[{}]",slotTime,count);
+            logger.info("ppppppppppppppppppppppppppppppppppppp "
+                    + "verySlowErrorCount:[{}], "
+                    + "slowErrorCount:[{}], "
+                    + "normalErrorCount:[{}], "
+                    + "fastErrorCount:[{}], "
+                    + "errorCount:[{}], "
+                    + "verySlowCount:[{}], "
+                    + "fastCount:[{}], "
+                    + "normalCount:[{}], "
+                    + "slowCount:[{}]",verySlowErrorCount,slowErrorCount,normalErrorCount,fastErrorCount,errorCount,verySlowCount,fastCount,normalCount,slowCount);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("ppppppppppppp", e);
+        }
+        
         final HistogramSchema schema = this.schema;
 
         if (slotTime <= schema.getVerySlowErrorSlot().getSlotTime()) {

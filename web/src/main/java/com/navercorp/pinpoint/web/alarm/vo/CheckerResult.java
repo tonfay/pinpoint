@@ -69,10 +69,12 @@ public class CheckerResult {
     }
 
     public void increseCount() {
-        ++sequenceCount;
+//      timingCount = sequenceCount * 2 + 1;
         
-        if (sequenceCount == timingCount) {
-            timingCount = sequenceCount * 2 + 1;
-        }
+//    timingCount = sequenceCount * 2 + 1;
+      
+	      //每次提醒后都在下一分钟再次提醒,源码规则是在当前次提醒后,下一次提醒时间是 * 2 + 1,  modify by tonfay
+	      //老源码规则: 例: 1分钟提醒一次,1*2+1 = 3分钟提醒一次,3*2+1 7分钟提醒一次, 7*2+1 = 15分钟提醒一次,以此类推
+	      timingCount = sequenceCount + 1;
     }
 }

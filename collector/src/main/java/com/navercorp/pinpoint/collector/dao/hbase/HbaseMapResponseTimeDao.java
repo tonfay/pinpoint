@@ -84,6 +84,7 @@ public class HbaseMapResponseTimeDao implements MapResponseTimeDao {
 
     @Override
     public void received(String applicationName, ServiceType applicationServiceType, String agentId, int elapsed, boolean isError) {
+        logger.info("ccccccccccccccc");
         if (applicationName == null) {
             throw new NullPointerException("applicationName must not be null");
         }
@@ -102,6 +103,7 @@ public class HbaseMapResponseTimeDao implements MapResponseTimeDao {
 
         final short slotNumber = ApplicationMapStatisticsUtils.getSlotNumber(applicationServiceType, elapsed, isError);
         final ColumnName selfColumnName = new ResponseColumnName(agentId, slotNumber);
+        logger.info("ccccccccccccccc1bb{}",useBulk);
         if (useBulk) {
             TableName mapStatisticsSelfTableName = tableNameProvider.getTableName(MAP_STATISTICS_SELF_VER2_STR);
             bulkIncrementer.increment(mapStatisticsSelfTableName, selfRowKey, selfColumnName);

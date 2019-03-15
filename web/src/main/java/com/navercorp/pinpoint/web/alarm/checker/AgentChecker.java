@@ -72,7 +72,9 @@ public abstract class AgentChecker<T> extends AlarmChecker<T> {
         StringBuilder message = new StringBuilder();
         
         for (Entry<String, T> detected : detectedAgents.entrySet()) {
-            message.append(String.format(" Value of agent(%s) is %s%s during the past 5 mins.(Threshold : %s%s)", detected.getKey(), detected.getValue(), unit, rule.getThreshold(), unit));
+            message.append(String.format(" Value of agent(%s) is %s%s during the past 5 mins.(Threshold : %s%s). notes : %s", detected.getKey(), detected.getValue(), unit, rule.getThreshold(), unit, rule.getNotes()));
+            message.append("<br>");
+            message.append(SetUrlUtil.getAgentUrl(rule, detected.getKey()));
             message.append("<br>");
         }
         
