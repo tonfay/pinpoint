@@ -34,12 +34,12 @@
 
     <logger name="com.navercorp.pinpoint" additivity="false">
         <level value="INFO"/>
-        <appender-ref ref="console"/>
-        <appender-ref ref="rollingFile"/>
+        <!-- <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/> -->
     </logger>
 
     <root>
         <level value="INFO"/>
-        <appender-ref ref="rollingFile"/>
+        <!-- <appender-ref ref="rollingFile"/> -->
     </root>
 </log4j:configuration>
