@@ -33,7 +33,7 @@ public class AlarmMessageSenderImple implements AlarmMessageSender{
             logger.error("组装参数异常",e);
         }
         logger.info("发送钉钉begin");
-        HttpUtil.doPost("https://oapi.dingtalk.com/robot/send?access_token=b39e9d52b898af22bdecdf5adc01724961513281cca86b28bd7ad0579bf7649f", object);
+        HttpUtil.doPost("https://oapi.dingtalk.com/robot/send?access_token=a3c4111fb4fe0550c74407892b8bb317b8faa1db35909765b71a87cd0cef7ad9", object);
         logger.info("发送钉钉end");
         //钉钉代码块end
         

@@ -11,7 +11,7 @@ import com.navercorp.pinpoint.web.alarm.vo.Rule;
  *
  */
 public class SetUrlUtil {
-    public static String SERVER_HOST = "http://10.18.105.245:8031";
+    public static String SERVER_HOST = "http://pp.shouqiev.net";
     public static String get(Rule rule) {
         String applicationId = rule.getApplicationId();
         String serverType = rule.getServiceType();
