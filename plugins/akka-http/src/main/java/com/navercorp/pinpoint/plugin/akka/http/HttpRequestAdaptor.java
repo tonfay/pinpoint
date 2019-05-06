@@ -37,7 +37,8 @@ public class HttpRequestAdaptor implements RequestAdaptor<HttpRequest> {
     // https://doc.akka.io/docs/akka-http/current/routing-dsl/directives/misc-directives/extractClientIP.html
     // X-Forwarded-For, Remote-Address, or X-Real-IP
 
-    private static final String DEFAULT_REMOTE_ADDRESS_HEADER = "Remote-Address";
+    private static final String DEFAULT_REMOTE_ADDRESS_HEADER = "X-Forwarded-For";
+//    private static final String DEFAULT_REMOTE_ADDRESS_HEADER = "Remote-Address";
 
     private final String remoteAddressHeader;
 
